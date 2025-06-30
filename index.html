@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistikator+</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+<body class="light-mode">
+  <div class="container" id="app">
+    <h1>📊 Statistikator+</h1>
+    <label>
+      Mode:
+      <button onclick="toggleMode()">Toggle Dark/Light</button>
+    </label>
+
+    <textarea id="dataInput" rows="5" placeholder="Masukkan data numerik, pisahkan dengan koma atau spasi..."></textarea>
+    
+    <label for="csvFile">Atau upload file CSV:</label>
+    <input type="file" id="csvFile" accept=".csv" onchange="handleCSV(event)">
+
+    <br><button onclick="proses()">Hitung Statistik</button>
+    <button onclick="resetAll()">Reset</button>
+    <button onclick="exportPDF()">Export PDF</button>
+
+    <div id="output"></div>
+
+    <canvas id="chart1" height="100"></canvas>
+    <canvas id="chart2" height="100"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
