@@ -2,33 +2,35 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Statistikator+</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistikator</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-<body class="light-mode">
-  <div class="container" id="app">
-    <h1>📊 Statistikator+</h1>
-    <label>
-      Mode:
-      <button onclick="toggleMode()">Toggle Dark/Light</button>
-    </label>
+<body>
+  <div class="container">
+    <h1>📊 Statistikator</h1>
 
-    <textarea id="dataInput" rows="5" placeholder="Masukkan data numerik, pisahkan dengan koma atau spasi..."></textarea>
-    
-    <label for="csvFile">Atau upload file CSV:</label>
-    <input type="file" id="csvFile" accept=".csv" onchange="handleCSV(event)">
+    <div class="dark-mode-toggle">
+      <label>
+        <input type="checkbox" id="darkToggle" onchange="toggleDarkMode()"> Dark Mode
+      </label>
+    </div>
 
-    <br><button onclick="proses()">Hitung Statistik</button>
-    <button onclick="resetAll()">Reset</button>
-    <button onclick="exportPDF()">Export PDF</button>
+    <p>Masukkan Dataset (pisahkan angka dengan koma):</p>
+    <textarea id="dataInput" placeholder="Contoh: 90,85,78,80"></textarea>
+
+    <p>Dataset Tambahan (opsional):</p>
+    <textarea id="dataInput2" placeholder="Contoh: 75,88,82"></textarea>
+
+    <button onclick="hitungSemua()">Hitung Statistik</button>
+    <button onclick="exportPDF()">Ekspor ke PDF</button>
 
     <div id="output"></div>
-
-    <canvas id="chart1" height="100"></canvas>
-    <canvas id="chart2" height="100"></canvas>
+    <canvas id="chartBoxplot"></canvas>
+    <canvas id="chartPoligon"></canvas>
+    <canvas id="chartBatang"></canvas>
   </div>
 
   <script src="script.js"></script>
